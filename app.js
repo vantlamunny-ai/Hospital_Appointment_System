@@ -11,6 +11,7 @@ const hospitalRoutes = require("./routes/hospitalRoutes");
 const appointmentRoutes = require("./routes/appointmentRoutes");
 const availabilityRoutes = require("./routes/availabilityRoutes");
 const notificationRoutes = require("./routes/notificationRoutes");
+const authRoutes = require("./routes/authRoutes");
 app.use(express.json());
 
 app.use(logger);
@@ -22,6 +23,7 @@ app.use("/hospitals", hospitalRoutes);
 app.use("/appointments", appointmentRoutes);
 app.use("/availability", availabilityRoutes);
 app.use("/notifications", notificationRoutes);
+app.use("/auth", authRoutes);
 app.get("/", (req, res) => {
     res.status(200).json({
         success: true,

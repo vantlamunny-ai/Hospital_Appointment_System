@@ -3,15 +3,41 @@ const express = require("express");
 const router = express.Router();
 
 const doctorController = require("../controllers/doctorController");
+const authMiddleware = require("../middleware/authMiddleware");
 
-router.get("/", doctorController.getAllDoctors);
+// Get all doctors
+router.get(
+    "/",
+    authMiddleware,
+    doctorController.getAllDoctors
+);
 
-router.post("/", doctorController.createDoctor);
+// Create doctor
+router.post(
+    "/",
+    authMiddleware,
+    doctorController.createDoctor
+);
 
-router.get("/:id", doctorController.getDoctorById);
+// Get doctor by ID
+router.get(
+    "/:id",
+    authMiddleware,
+    doctorController.getDoctorById
+);
 
-router.put("/:id", doctorController.updateDoctor);
+// Update doctor
+router.put(
+    "/:id",
+    authMiddleware,
+    doctorController.updateDoctor
+);
 
-router.delete("/:id", doctorController.deleteDoctor);
+// Delete doctor
+router.delete(
+    "/:id",
+    authMiddleware,
+    doctorController.deleteDoctor
+);
 
 module.exports = router;

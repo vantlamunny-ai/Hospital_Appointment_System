@@ -2,23 +2,21 @@ const appointmentService = require("../services/appointmentService");
 
 async function getAllAppointments(req, res) {
     try {
-        const appointments = await appointmentService.getAllAppointments();
+        const appointments =
+            await appointmentService.getAllAppointments();
 
         res.status(200).json({
             success: true,
             message: "Appointments fetched successfully",
             data: appointments
         });
-    }
-    catch (error) {
+    } catch (error) {
         res.status(500).json({
             success: false,
             message: error.message
         });
     }
 }
-
-
 async function createAppointment(req, res) {
     try {
         const appointment =

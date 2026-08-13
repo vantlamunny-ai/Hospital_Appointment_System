@@ -3,15 +3,47 @@ const express = require("express");
 const router = express.Router();
 
 const hospitalController = require("../controllers/hospitalController");
+const authMiddleware = require("../middleware/authMiddleware");
 
-router.get("/", hospitalController.getAllHospitals);
 
-router.post("/", hospitalController.createHospital);
+// Get all hospitals
+router.get(
+    "/",
+    authMiddleware,
+    hospitalController.getAllHospitals
+);
 
-router.get("/:id", hospitalController.getHospitalById);
 
-router.put("/:id", hospitalController.updateHospital);
+// Create hospital
+router.post(
+    "/",
+    authMiddleware,
+    hospitalController.createHospital
+);
 
-router.delete("/:id", hospitalController.deleteHospital);
+
+// Get hospital by ID
+router.get(
+    "/:id",
+    authMiddleware,
+    hospitalController.getHospitalById
+);
+
+
+// Update hospital
+router.put(
+    "/:id",
+    authMiddleware,
+    hospitalController.updateHospital
+);
+
+
+// Delete hospital
+router.delete(
+    "/:id",
+    authMiddleware,
+    hospitalController.deleteHospital
+);
+
 
 module.exports = router;

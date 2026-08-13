@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 
 const availabilityController = require("../controllers/availabilityController");
-
+const authMiddleware = require("../middleware/authMiddleware");
 router.get("/", availabilityController.getAllAvailability);
 
 router.post("/", availabilityController.createAvailability);
